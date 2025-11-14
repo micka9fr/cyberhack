@@ -12,7 +12,7 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
         classes: ["cyberhack", "actor", "standard-form"],
         position: {
             width: 600,
-            height: 600
+            height: 900
         },
         actions: {
             viewDoc: this.#viewDoc,
@@ -47,17 +47,20 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
     /** @inheritdoc */
     static PARTS = {
         header: {
-            template: systemPath("templates/actor/character-sheet.hbs")
+            template: systemPath("templates/actor/parts/header.hbs")
+        },
+        stats_block: {
+            template: systemPath("templates/actor/parts/stats-block.hbs")
         },
         tabs: {
             template: "templates/generic/tab-navigation.hbs"
         },
         talents: {
-            template: systemPath("templates/actor/parts/view-talents.hbs"),
+            template: systemPath("templates/actor/tabs/view-talents.hbs"),
             scrollable: [""]
         },
         cyberwares: {
-            template: systemPath("templates/actor/parts/view-cyberwares.hbs"),
+            template: systemPath("templates/actor/tabs/view-cyberwares.hbs"),
             scrollable: [""]
         }
     };
@@ -86,9 +89,13 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
             system: this.actor.system,
             flags: this.actor.flags,
             actorFields: this.actor.schema.fields,
+            systemFields: this.document.system.schema.fields,
             config: CONFIG
         });
-
+        console.log(this.actor);
+        console.log(this.actor.schema.fields);
+        console.log(this.actor.system);
+        console.log(this.document.system.schema.fields);
         return context;
     }
 

@@ -1,1 +1,23 @@
-{}
+{
+  "cyberhack.Actor.Character.FIELDS.testInt.label": "OK RIGHT",
+  "cyberhack.Actor.Character.FIELDS.testString.label": "OK RIGHT",
+  "cyberhack": {
+    "Sheets": {
+      "Labels": {
+        "ActorSheet": "Default UTS Actor Sheet",
+        "ItemSheet": "Default UTS Item Sheet"
+      },
+      "Tabs": {
+        "talents": "Talents",
+        "cyberwares": "Cyberwares"
+      }
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Player Character"
+    }
+  }
+}
+
+

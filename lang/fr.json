@@ -1,0 +1,14 @@
+{
+  "Cyberhack": {
+    "Sheets": {
+      "Labels": {
+        "ActorSheet": "Default UTS Actor Sheet",
+        "ItemSheet": "Default UTS Item Sheet"
+      },
+      "Tabs": {
+        "talents": "Talents",
+        "cyberwares": "Augmentations"
+      }
+    }
+  }
+}
