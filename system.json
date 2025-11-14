@@ -7,9 +7,9 @@
     "minimum": "10",
     "verified": "13"
   },
-  "authors": {
-    "name": "Meka"
-  },
+  "authors": [
+    { "name": "Meka" }
+  ],
   "esmodules": [
     "cyberhack.mjs"
   ],
