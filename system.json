@@ -1,0 +1,44 @@
+{
+  "id": "cyberhack",
+  "title": "Cyber Hack (revised) v2",
+  "description": "A simplified system for R. Talsorian Games' Cyberpunk game",
+  "version": "1.0",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "13"
+  },
+  "authors": {
+    "name": "Meka"
+  },
+  "esmodules": [
+    "cyberhack.mjs"
+  ],
+  "styles": [
+    "css/cyberhack.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "english",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {}
+    },
+    "Item": {
+      "talent": {},
+      "cyberware": {}
+    }
+  },
+  "packs": [
+    {
+      "name": "talents",
+      "label": "Talents",
+      "type": "Item"
+    }
+  ],
+  "background": ""
+}
