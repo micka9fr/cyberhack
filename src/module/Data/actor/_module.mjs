@@ -3,7 +3,7 @@ import {NPCDataModel} from "./characterDataModel.mjs";
 
 const config = {
     character: CharacterDataModel,
-    NPC: NPCDataModel,
+    npc: NPCDataModel,
 };
 
 export {CharacterDataModel, NPCDataModel, config};
