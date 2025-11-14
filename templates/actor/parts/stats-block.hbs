@@ -2,15 +2,18 @@
 	<h1>STATBLOC</h1>
 	{{ actor.system.testInt }}
 	{{actor.system.testCharacter}}
-
-
+<diV>
+	{{localize "cyberhack.Actor.Character.FIELDS.testInt.label" }}
+</diV>
 	{{ formGroup systemFields.testInt value=actor.system.testInt localize=true }}
 
 	{{ formGroup systemFields.testString value=actor.system.testString localize=true}}
-	<ol>
-	{{#each systemFields.attributes }}
 
-		<li>{{ formGroup this value=this }}</li>
-	{{/each}}
-	</ol>
+	<div class="cyberhack-stats-block">
+		<ul>
+		{{#each systemFields.attributes }}
+			<li>{{ formGroup this value=this localize=true }}</li>
+		{{/each}}
+		</ul>
+	</div>
 </section>

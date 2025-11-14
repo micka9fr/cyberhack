@@ -1,3 +1,15 @@
 nav.tabs {
     text-transform: uppercase;
 }
+
+.cyberhack-stats-block {
+    min-width: 150px;
+    max-width: 150px;
+    li {
+        list-style-type: none;
+    }
+    .form-fields input[type="number"] {
+        min-width: 50px;
+        max-width: 50px;
+    }
+}

@@ -10,11 +10,11 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
     static LOCALIZATION_PREFIXES = ["cyberhack.Actor"];
     static defineSchema() {
         return {
-            testCharacter: new fields.StringField({initial: 'Je suis un PJ' }),
+            testCharacter: new fields.StringField({ initial: 'Je suis un PJ' }),
             testString: new fields.StringField(),
             attributes: new fields.SchemaField({
                 body: new fields.NumberField(),
-                Dexterity: new fields.NumberField(),
+                dexterity: new fields.NumberField(),
                 reflexe: new fields.NumberField(),
                 willpower: new fields.NumberField(),
                 knowledge: new fields.NumberField(),
@@ -33,7 +33,7 @@ export class CharacterDataModel extends BaseDataModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
-            testInt: new fields.NumberField({label: "cyberhack.Actor.Character.FIELDS.testInt.label",required: true, integer: true, min: 0, initial: 5}),
+            testInt: new fields.NumberField({ required: true, integer: true, min: 0, initial: 5}),
             goodness: new fields.SchemaField({
                 value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 5 }),
                 max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 10 })

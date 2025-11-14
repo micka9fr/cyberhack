@@ -1,11 +1,41 @@
 {
-  "cyberhack.Actor.Character.FIELDS.testInt.label": "OK RIGHT",
-  "cyberhack.Actor.Character.FIELDS.testString.label": "OK RIGHT",
   "cyberhack": {
+    "Actor": {
+      "Character": {
+        "FIELDS": {
+          "testInt": {
+            "label": "OK RIGHT"
+          },
+          "testString": {
+            "label": "Groovy!"
+          },
+          "attributes": {
+            "body": {
+              "label": "body"
+            },
+            "dexterity": {
+              "label": "dexterity"
+            },
+            "reflexe": {
+              "label": "reflexe"
+            },
+            "willpower": {
+              "label": "body"
+            },
+            "knowledge": {
+              "label": "knowledge"
+            },
+            "empathy": {
+              "label": "empathy"
+            }
+          }
+        }
+      }
+    },
     "Sheets": {
       "Labels": {
-        "ActorSheet": "Default UTS Actor Sheet",
-        "ItemSheet": "Default UTS Item Sheet"
+        "ActorSheet": "Default cyberhack Actor Sheet",
+        "ItemSheet": "Default cyberhack Item Sheet"
       },
       "Tabs": {
         "talents": "Talents",
