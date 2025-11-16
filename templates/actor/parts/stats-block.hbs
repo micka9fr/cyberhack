@@ -1,19 +1,25 @@
 <section>
-	<h1>STATBLOC</h1>
-	{{ actor.system.testInt }}
-	{{actor.system.testCharacter}}
-<diV>
-	{{localize "cyberhack.Actor.Character.FIELDS.testInt.label" }}
-</diV>
-	{{ formGroup systemFields.testInt value=actor.system.testInt localize=true }}
-
-	{{ formGroup systemFields.testString value=actor.system.testString localize=true}}
-
 	<div class="cyberhack-stats-block">
 		<ul>
-		{{#each systemFields.attributes }}
-			<li>{{ formGroup this value=this localize=true }}</li>
-		{{/each}}
+			<li>{{formGroup systemFields.attributes.fields.body value=system.attributes.body localize=true}}</li>
+			<li>{{formGroup systemFields.attributes.fields.dexterity value=system.attributes.dexterity localize=true}}</li>
+			<li>{{formGroup systemFields.attributes.fields.reflexe value=system.attributes.reflexe localize=true}}</li>
+			<li>{{formGroup systemFields.attributes.fields.willpower value=system.attributes.willpower localize=true}}</li>
+			<li>{{formGroup systemFields.attributes.fields.knowledge value=system.attributes.knowledge localize=true}}</li>
+			<li>{{formGroup systemFields.attributes.fields.empathy value=system.attributes.empathy localize=true}}</li>
 		</ul>
 	</div>
 </section>
+
+
+
+
+<h1>STATBLOC</h1>
+{{ actor.system.testInt }}
+{{actor.system.testCharacter}}
+<diV>
+	{{localize "cyberhack.Actor.Character.FIELDS.testInt.label" }}
+</diV>
+{{ formGroup systemFields.testInt value=actor.system.testInt localize=true }}
+
+{{ formGroup systemFields.testString value=actor.system.testString localize=true}}

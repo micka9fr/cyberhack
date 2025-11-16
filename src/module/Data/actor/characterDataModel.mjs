@@ -12,6 +12,18 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
         return {
             testCharacter: new fields.StringField({ initial: 'Je suis un PJ' }),
             testString: new fields.StringField(),
+            health: new fields.SchemaField({
+                value: new fields.NumberField(),
+                max: new fields.NumberField()
+            }),
+            armor: new fields.SchemaField({
+                head: new fields.NumberField(),
+                torso: new fields.NumberField(),
+                left_arm: new fields.NumberField(),
+                right_arm: new fields.NumberField(),
+                left_leg: new fields.NumberField(),
+                right_leg: new fields.NumberField(),
+            }),
             attributes: new fields.SchemaField({
                 body: new fields.NumberField(),
                 dexterity: new fields.NumberField(),
@@ -19,6 +31,11 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
                 willpower: new fields.NumberField(),
                 knowledge: new fields.NumberField(),
                 empathy: new fields.NumberField(),
+            }),
+            derived: new fields.SchemaField({
+                btm: new fields.NumberField(),
+                speed: new fields.NumberField(),
+                carry: new fields.NumberField()
             })
         };
     }

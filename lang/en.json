@@ -28,6 +28,37 @@
             "empathy": {
               "label": "empathy"
             }
+          },
+          "armor": {
+            "head": {
+              "label": "head"
+            },
+            "torso": {
+              "label": "torso"
+            },
+            "left_arm": {
+              "label": "l.arm"
+            },
+            "right_arm": {
+              "label": "r.arm"
+            },
+            "left_leg": {
+              "label": "l.leg"
+            },
+            "right_leg": {
+              "label": "r.leg"
+            }
+          },
+          "derived": {
+            "speed": {
+              "label": "speed"
+            },
+            "carry": {
+              "label": "carry"
+            },
+            "btm": {
+              "label": "btm"
+            }
           }
         }
       }

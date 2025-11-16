@@ -11,7 +11,7 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
     static DEFAULT_OPTIONS = {
         classes: ["cyberhack", "actor", "standard-form"],
         position: {
-            width: 600,
+            width: 720,
             height: 900
         },
         actions: {
@@ -48,9 +48,6 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
     static PARTS = {
         header: {
             template: systemPath("templates/actor/parts/header.hbs")
-        },
-        stats_block: {
-            template: systemPath("templates/actor/parts/stats-block.hbs")
         },
         tabs: {
             template: "templates/generic/tab-navigation.hbs"

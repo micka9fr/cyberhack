@@ -1,14 +1,58 @@
-<header class="sheet-header flexrow">
-	<img
-			class="profile-img"
-			src="{{actor.img}}"
-		{{#if editable}}
-			data-action="editImage"
-			data-edit="img"
-		{{/if}}
-			data-tooltip="{{actor.name}}"
-			height="100" width="100"
-			alt="{{actor.name}}"
-	>
-	{{formGroup actorFields.name value=actor.name}}
+<header class="sheet-header flexcol">
+	<div class="flexcol">
+		{{ formGroup actorFields.name value=actor.name localize=true }}
+	</div>
+	<div class="flexcol">
+		<div class="flexrow">
+			<div style="max-width: 200px">
+				<img class="profile-img" src="{{ actor.img }}"
+					{{#if editable}}
+						data-action="editImage"
+						data-edit="img"
+					{{/if}}
+					data-tooltip="{{ actor.name }}"
+					height="200" width="200"
+					alt="{{ actor.name }}"
+				>
+			</div>
+			<div class="cyberhack-stats-block">
+				<ul>
+					<li>{{ formGroup systemFields.attributes.fields.body value=system.attributes.body localize=true }}</li>
+					<li>{{ formGroup systemFields.attributes.fields.dexterity value=system.attributes.dexterity localize=true }}</li>
+					<li>{{ formGroup systemFields.attributes.fields.reflexe value=system.attributes.reflexe localize=true }}</li>
+					<li>{{ formGroup systemFields.attributes.fields.willpower value=system.attributes.willpower localize=true }}</li>
+					<li>{{ formGroup systemFields.attributes.fields.knowledge value=system.attributes.knowledge localize=true }}</li>
+					<li>{{ formGroup systemFields.attributes.fields.empathy value=system.attributes.empathy localize=true }}</li>
+				</ul>
+			</div>
+			<div class="panel-right">
+				<div class="secondary-block">
+					<div class="flexrow center">
+						{{ formGroup systemFields.derived.fields.speed value=system.derived.speed localize=true classes="armor" }}
+						{{ formGroup systemFields.derived.fields.carry value=system.derived.carry localize=true classes="armor" }}
+						{{ formGroup systemFields.derived.fields.btm value=system.derived.btm localize=true classes="armor" }}
+					</div>
+				</div>
+				<div class="armor-block">
+					<div class="flexrow center">
+						{{ formGroup systemFields.armor.fields.head value=system.armor.head localize=true classes="armor" }}
+						{{ formGroup systemFields.armor.fields.torso value=system.armor.torso localize=true classes="armor" }}
+						{{ formGroup systemFields.armor.fields.left_arm value=system.armor.left_arm localize=true classes="armor" }}
+						{{ formGroup systemFields.armor.fields.right_arm value=system.armor.right_arm localize=true classes="armor" }}
+						{{ formGroup systemFields.armor.fields.left_leg value=system.armor.left_leg localize=true classes="armor" }}
+						{{ formGroup systemFields.armor.fields.right_leg value=system.armor.right_leg localize=true classes="armor" }}
+					</div>
+					<div class="flexrow center">
+						<div>1</div>
+						<div>2-4</div>
+						<div>5</div>
+						<div>6</div>
+						<div>7-8</div>
+						<div>9-10</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </header>

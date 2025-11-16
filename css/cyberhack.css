@@ -13,3 +13,19 @@ nav.tabs {
         max-width: 50px;
     }
 }
+
+.panel-right {
+    margin-left: 24px;
+    .armor-block, .secondary-block {
+        max-width: 350px;
+        .armor {
+            flex-direction: column;
+            margin: 0 3px;
+        }
+    }
+}
+
+
+.center {
+    text-align: center;
+}

@@ -22,7 +22,6 @@ Hooks.once("init", () => {
     Object.assign(CONFIG.Actor.dataModels, dataModels.Actor.config);
     Object.assign(CONFIG.Item.dataModels , dataModels.Item.config);
 
-
     console.log(CONFIG.Actor.dataModels);
     console.log(CONFIG.Item.dataModels);
     //CONFIG.Actor.defaultType = "token";
