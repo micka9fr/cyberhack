@@ -1,2 +1,2 @@
-export {default as CyberhackActor} from "./cyberhackActor.mjs";
-export {default as CyberhackItem} from "./cyberhackItem.mjs";
+export {default as CharacterActor} from "./CharacterActor.mjs";
+export {default as TalentItem} from "./TalentItem.mjs";

@@ -3,30 +3,39 @@
     "Actor": {
       "Character": {
         "FIELDS": {
-          "testInt": {
-            "label": "OK RIGHT"
-          },
-          "testString": {
-            "label": "Groovy!"
+          "role": {
+            "label": "role"
           },
           "attributes": {
             "body": {
-              "label": "body"
+              "base": {
+                "label": "body"
+              }
             },
             "dexterity": {
-              "label": "dexterity"
+              "base": {
+                "label": "dexterity"
+              }
             },
             "reflexe": {
-              "label": "reflexe"
+              "base": {
+                "label": "reflexe"
+              }
             },
             "willpower": {
-              "label": "body"
+              "base": {
+                "label": "willpower"
+              }
             },
             "knowledge": {
-              "label": "knowledge"
+              "base": {
+                "label": "knowledge"
+              }
             },
             "empathy": {
-              "label": "empathy"
+              "base": {
+                "label": "empathy"
+              }
             }
           },
           "armor": {
@@ -59,6 +68,23 @@
             "btm": {
               "label": "btm"
             }
+          }
+        }
+      }
+    },
+    "Item": {
+      "FIELDS": {
+        "description": {
+          "label": "description"
+        }
+      },
+      "Talent": {
+        "FIELDS": {
+          "xpPrice": {
+            "label": "cost"
+          },
+          "level": {
+            "label": "level"
           }
         }
       }

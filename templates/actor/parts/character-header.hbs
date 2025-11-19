@@ -1,6 +1,7 @@
 <header class="sheet-header flexcol">
 	<div class="flexcol">
 		{{ formGroup actorFields.name value=actor.name localize=true }}
+		{{ formGroup systemFields.role value=system.role localize=true classes="armor" }}
 	</div>
 	<div class="flexcol">
 		<div class="flexrow">
@@ -17,20 +18,38 @@
 			</div>
 			<div class="cyberhack-stats-block">
 				<ul>
-					<li>{{ formGroup systemFields.attributes.fields.body value=system.attributes.body localize=true }}</li>
-					<li>{{ formGroup systemFields.attributes.fields.dexterity value=system.attributes.dexterity localize=true }}</li>
-					<li>{{ formGroup systemFields.attributes.fields.reflexe value=system.attributes.reflexe localize=true }}</li>
-					<li>{{ formGroup systemFields.attributes.fields.willpower value=system.attributes.willpower localize=true }}</li>
-					<li>{{ formGroup systemFields.attributes.fields.knowledge value=system.attributes.knowledge localize=true }}</li>
-					<li>{{ formGroup systemFields.attributes.fields.empathy value=system.attributes.empathy localize=true }}</li>
+					{{#each systemFields.attributes}}
+						<li>{{ formGroup fields.base value=(lookup (lookup @root.system.attributes this.name) "base") localize=true }}</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="cyberhack-stats-block">
+				<ul>
+				{{#each system.attributes as |attr key|}}
+					<li>
+						<div class="form-group attribute" data-attribute="{{key}}">
+							<a class="label roll-attribute" data-action="rollAttribute">{{localize (concat "cyberhack.Actor.Character.FIELDS.attributes." @key ".base.label")}}</a>
+							<span class="value">{{attr.value}}</span>
+						</div>
+					</li>
+				{{/each}}
 				</ul>
 			</div>
 			<div class="panel-right">
 				<div class="secondary-block">
 					<div class="flexrow center">
-						{{ formGroup systemFields.derived.fields.speed value=system.derived.speed localize=true classes="armor" }}
-						{{ formGroup systemFields.derived.fields.carry value=system.derived.carry localize=true classes="armor" }}
-						{{ formGroup systemFields.derived.fields.btm value=system.derived.btm localize=true classes="armor" }}
+						<div class="stat">
+							<label>Carry</label>
+							<span>{{system.carry}} kg</span>
+						</div>
+						<div class="stat">
+							<label>Speed</label>
+							<span>{{system.speed}} m</span>
+						</div>
+						<div class="stat">
+							<label>BTM</label>
+							<span>{{system.btm}}</span>
+						</div>
 					</div>
 				</div>
 				<div class="armor-block">

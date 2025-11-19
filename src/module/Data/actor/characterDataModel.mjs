@@ -10,8 +10,7 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
     static LOCALIZATION_PREFIXES = ["cyberhack.Actor"];
     static defineSchema() {
         return {
-            testCharacter: new fields.StringField({ initial: 'Je suis un PJ' }),
-            testString: new fields.StringField(),
+            role: new fields.StringField({ initial: 'Je suis un PJ' }),
             health: new fields.SchemaField({
                 value: new fields.NumberField(),
                 max: new fields.NumberField()
@@ -25,18 +24,25 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
                 right_leg: new fields.NumberField(),
             }),
             attributes: new fields.SchemaField({
-                body: new fields.NumberField(),
-                dexterity: new fields.NumberField(),
-                reflexe: new fields.NumberField(),
-                willpower: new fields.NumberField(),
-                knowledge: new fields.NumberField(),
-                empathy: new fields.NumberField(),
+                body: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
+                dexterity: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
+                reflexe: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
+                willpower: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
+                knowledge: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
+                empathy: new fields.SchemaField({
+                    base: new fields.NumberField()
+                }),
             }),
-            derived: new fields.SchemaField({
-                btm: new fields.NumberField(),
-                speed: new fields.NumberField(),
-                carry: new fields.NumberField()
-            })
         };
     }
 }
@@ -72,3 +78,6 @@ export class NPCDataModel extends BaseDataModel {
         };
     }
 }
+
+
+

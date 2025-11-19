@@ -29,7 +29,9 @@
       "npc": {}
     },
     "Item": {
-      "talent": {},
+      "talent": {
+        "htmlFields": ["system.description"]
+      },
       "cyberware": {}
     }
   },

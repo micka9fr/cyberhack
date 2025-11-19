@@ -1,1 +1,1 @@
-export {CharacterActorSheet} from "./actorSheet.mjs";
+export {CharacterActorSheet} from "./CharacterActorSheet.mjs";

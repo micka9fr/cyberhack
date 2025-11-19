@@ -1,2 +1,2 @@
-export {CyberwareSheet} from "./cyberwareSheet.mjs";
-export {TalentSheet} from "./talentSheet.mjs";
+export { CyberwareSheet } from "./cyberwareSheet.mjs";
+export { TalentSheet } from "./TalentSheet.mjs";

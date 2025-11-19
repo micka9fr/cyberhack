@@ -1,4 +1,4 @@
-import {TalentDataModel} from "./itemDataModel.mjs";
+import {TalentDataModel} from "./ItemDataModel.mjs";
 
 const config = {
     talent: TalentDataModel

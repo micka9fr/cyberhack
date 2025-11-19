@@ -1,7 +1,7 @@
 /**
  * A simple extension that adds a hook at the end of data prep
  */
-export default class CyberhackActor extends foundry.documents.Actor {
+export default class CharacterActor extends foundry.documents.Actor {
     /** @override */
     prepareData() {
         // Prepare data for the actor. Calling the super version of this executes
@@ -31,9 +31,30 @@ export default class CyberhackActor extends foundry.documents.Actor {
         const systemData = actorData.system;
         // const const flags = actorData.flags.cyberhack || {};
 
+
+        // === ITEM BONUS ====
+        const attributeMods = {
+            body: 2,
+            reflexe: 1,
+            empathy: -1
+        };
+
+        for (const [key, attribut] of Object.entries(systemData.attributes)) {
+            const bonus = attributeMods[key] ?? 0;
+            attribut.value = attribut.base + bonus
+        }
+
+        // === Secondary stats ===
+        systemData.carry = systemData.attributes.body.value * 10;
+        systemData.speed = systemData.attributes.dexterity.value * 2;
+        systemData.btm = Math.floor(systemData.attributes.dexterity.value / 4);
+
+        // === Specific derivedData ===
         this._prepareCharacterData(actorData);
         this._prepareNpcData(actorData);
     }
+
+
 
 
     /**
@@ -47,12 +68,6 @@ export default class CyberhackActor extends foundry.documents.Actor {
 
         console.log(Object.entries(systemData.attributes));
 
-        // Loop through ability scores, and add their modifiers to our sheet output.
-        for (let [key, attribute] of Object.entries(systemData.attributes)) {
-
-            attribute.mod = attribute.value + 10;
-
-        }
     }
 
     _prepareNpcData(actorData) {
@@ -60,48 +75,6 @@ export default class CyberhackActor extends foundry.documents.Actor {
 
         // Make modifications to data here. For example:
         const systemData = actorData.system;
-        systemData.xp = (systemData.cr * systemData.cr) * 100;
-    }
-
-    /**
-     * Override getRollData() that's supplied to rolls.
-     */
-    getRollData() {
-        const data = super.getRollData();
-
-        // Prepare character roll data.
-        this._getCharacterRollData(data);
-        this._getNpcRollData(data);
-
-        return data;
-    }
-
-    /**
-     * Prepare character roll data.
-     */
-    _getCharacterRollData(data) {
-        if (this.type !== 'character') return;
-
-        // Copy the ability scores to the top level, so that rolls can use
-        // formulas like `@str.mod + 4`.
-        if (data.abilities) {
-            for (let [k, v] of Object.entries(data.abilities)) {
-                data[k] = foundry.utils.deepClone(v);
-            }
-        }
-
-        // Add level for easier access, or fall back to 0.
-        if (data.attributes.level) {
-            data.lvl = data.attributes.level.value ?? 0;
-        }
-    }
-
-    /**
-     * Prepare NPC roll data.
-     */
-    _getNpcRollData(data) {
-        if (this.type !== 'npc') return;
-
-        // Process additional NPC data here.
+        //systemData.xp = (systemData.cr * systemData.cr) * 100;
     }
 }
