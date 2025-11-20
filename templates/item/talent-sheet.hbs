@@ -2,28 +2,28 @@
 	<section class="sheet-body">
 		<div class=" item-edit">
 			<div class="form-group">
-				{{ formGroup itemFields.description value=system.description localize=true}}
+				{{ formGroup systemFields.description localize=true}}
 			</div>
 			<div class="flexrow">
 				<div class="form-grid">
-					{{ formGroup itemFields.xpPrice value=system.xpPrice localize=true}}
+					{{ formGroup systemFields.xpPrice localize=true}}
 				</div>
 				<div class="form-grid">
-					{{ formGroup itemFields.level value=system.level localize=true}}
+					{{ formGroup systemFields.level localize=true}}
 				</div>
 			</div>
 		</div>
 		<div class="item-read">
 			<div class="form-group">
 				<label>{{localize "cyberhack.Item.FIELDS.description.label" }}</label>
-				{{ system.description }}
+				{{ item.system.description }}
 			</div>
 			<div class="flexrow">
 				<div class="form-grid">
-					{{ system.xpPrice }}
+					{{ item.system.xpPrice }}
 				</div>
 				<div class="form-grid">
-					{{ system.level }}
+					{{ item.system.level }}
 				</div>
 			</div>
 		</div>

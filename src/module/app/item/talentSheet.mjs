@@ -12,12 +12,12 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         classes: ["cyberhack", "item", "standard-form"],
         position: { width: 550, height: "auto" },
         window: {  },
-        actions: {
-            viewDoc: this.#viewEffect,
-            createDoc: this.#createEffect,
-            deleteDoc: this.#deleteEffect,
-            toggleEffect: this.#toggleEffect
-        },
+        /*  actions: {
+              viewDoc: this.#viewEffect,
+              createDoc: this.#createEffect,
+              deleteDoc: this.#deleteEffect,
+              toggleEffect: this.#toggleEffect
+          },*/
         form: {
             submitOnChange: true,
             resizable: true
@@ -42,14 +42,16 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
             owner: this.document.isOwner,
             limited: this.document.limited,
             item: this.item,
-            actor: this.actor,
             system: this.item.system,
             flags: this.item.flags,
-            itemFields: this.item.system.schema.fields,
+            itemFields: this.item.schema.fields,
+            systemFields: this.document.system.schema.fields,
+            //description : await foundry.applications.ux.TextEditor.enrichHTML(this.document.system.description, { secrets: this.isOwner }),
             config: CONFIG
         });
 
         console.log(context.itemFields);
+        console.log(context.system);
 
         return context;
     }
