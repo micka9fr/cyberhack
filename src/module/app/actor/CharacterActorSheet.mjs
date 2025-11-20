@@ -90,7 +90,7 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
             systemFields: this.document.system.schema.fields,
             config: CONFIG
         });
-
+console.log(context);
         return context;
     }
 

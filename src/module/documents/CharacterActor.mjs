@@ -66,7 +66,7 @@ export default class CharacterActor extends foundry.documents.Actor {
         // Make modifications to data here. For example:
         const systemData = actorData.system;
 
-        console.log(Object.entries(systemData.attributes));
+        console.log(Object.entries(systemData));
 
     }
 

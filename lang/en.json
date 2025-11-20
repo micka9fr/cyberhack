@@ -76,6 +76,9 @@
       "FIELDS": {
         "description": {
           "label": "description"
+        },
+        "xpCost": {
+          "label": "XP cost"
         }
       },
       "Talent": {

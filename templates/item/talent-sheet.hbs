@@ -1,31 +1,35 @@
-<form class="cyberhack item-sheet talent-sheet" autocomplete="off">
-	<section class="sheet-body">
-		<div class=" item-edit">
-			<div class="form-group">
-				{{ formGroup systemFields.description localize=true}}
+<div class="draggable-item" draggable="true">
+<header class="sheet-header flexcol">
+	<div class="flexrow">
+		<h3>{{item.type}} : {{ item.name }} - {{ item.system.level }}</h3>
+		<input type="checkbox" class="view-editor" data-action="toggleEditMode" {{checked isEditMode}}>
+	</div>
+</header>
+<section class="sheet-body">
+	<div class="view-edit" data-edit-mode="true">
+		<div class="form-group">
+			{{ formGroup systemFields.description value=item.system.description localize=true}}
+		</div>
+		<div class="flexrow">
+			<div class="form-grid">
+				{{ formGroup systemFields.xpCost value=item.system.xpCost localize=true}}
 			</div>
-			<div class="flexrow">
-				<div class="form-grid">
-					{{ formGroup systemFields.xpPrice localize=true}}
-				</div>
-				<div class="form-grid">
-					{{ formGroup systemFields.level localize=true}}
-				</div>
+			<div class="form-grid">
+				{{ formGroup systemFields.level value=item.system.level localize=true}}
 			</div>
 		</div>
-		<div class="item-read">
-			<div class="form-group">
-				<label>{{localize "cyberhack.Item.FIELDS.description.label" }}</label>
-				{{ item.system.description }}
-			</div>
-			<div class="flexrow">
-				<div class="form-grid">
-					{{ item.system.xpPrice }}
-				</div>
-				<div class="form-grid">
-					{{ item.system.level }}
-				</div>
+	</div>
+	<div class="view-read" data-edit-mode="false">
+		<div class="form-group">
+			<label>{{localize "cyberhack.Item.FIELDS.description.label" }}</label>
+			{{ item.system.description }}
+		</div>
+		<div class="flexrow">
+			<label>{{localize "cyberhack.Item.FIELDS.xpCost.label" }}</label>
+			<div class="form-grid">
+				{{ item.system.xpCost }}
 			</div>
 		</div>
-	</section>
-</form>
+	</div>
+</section>
+</div>

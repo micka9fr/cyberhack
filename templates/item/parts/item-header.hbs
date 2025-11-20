@@ -1,4 +1,6 @@
 <header class="sheet-header flexcol">
-	<input class="item-editor" type="checkbox"/>
-	<h3>{{item.type}} - {{ item.name }}</h3>
+	<div class="flexrow">
+		<h3>{{item.type}} : {{ item.name }} - {{ item.system.level }}</h3>
+		<input type="checkbox" class="view-editor" data-action="toggleEditMode" {{checked isEditMode}}>
+	</div>
 </header>

@@ -34,3 +34,36 @@ a.label.roll-attribute {
     padding: 7px 0;
 }
 
+/* ==================================================================
+   ITEM SHEET – MODE ÉDITION / LECTURE
+   ================================================================== */
+
+/* Par défaut : on est en mode lecture */
+.view-edit   { display: none; }
+.view-read   { display: block; }
+
+/* Optionnel : un peu de style pour le checkbox (le rendre joli) */
+header.sheet-header .view-editor {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #ff6400; /* change la couleur du check (orange cyberpunk) */
+    margin: 8px;
+}
+
+/* Optionnel : faire apparaître un petit crayon quand on est en lecture */
+header.sheet-header::after {
+    content: "✎";
+    font-size: 1.4em;
+    position: absolute;
+    top: 8px;
+    left: 36px;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.view-editor:checked ~ header.sheet-header::after {
+    content: "✓";
+    opacity: 1;
+    color: #00ff00;
+}
