@@ -55,7 +55,7 @@ export class TalentDataModel extends ItemDataModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
-            xpPrice: new fields.NumberField({
+            xpCost: new fields.NumberField({
 
             }),
             level: new fields.NumberField({

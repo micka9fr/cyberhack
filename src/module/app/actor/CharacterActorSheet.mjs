@@ -19,7 +19,8 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
             createDoc: this.#createDoc,
             deleteDoc: this.#deleteDoc,
             toggleEffect: this.#toggleEffect,
-            rollAttribute: CharacterActorSheet.#rollAttribute
+            rollAttribute: this.#rollAttribute,
+            deleteItem: this.#deleteItem
         },
         form: {
             submitOnChange: true
@@ -54,11 +55,11 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
             template: "templates/generic/tab-navigation.hbs"
         },
         talents: {
-            template: systemPath("templates/actor/tabs/view-talents.hbs"),
+            template: systemPath("templates/actor/tabs/tab-talents.hbs"),
             scrollable: [""]
         },
         cyberwares: {
-            template: systemPath("templates/actor/tabs/view-cyberwares.hbs"),
+            template: systemPath("templates/actor/tabs/tab-cyberwares.hbs"),
             scrollable: [""]
         }
     };
@@ -86,11 +87,12 @@ export class CharacterActorSheet extends api.HandlebarsApplicationMixin(sheets.A
             actor: this.actor,
             system: this.actor.system,
             flags: this.actor.flags,
+            talents: this.actor.items.filter(i => i.type === "talent"),
             actorFields: this.actor.schema.fields,
             systemFields: this.document.system.schema.fields,
             config: CONFIG
         });
-console.log(context);
+console.log(context.actor.items);
         return context;
     }
 
@@ -136,6 +138,11 @@ console.log(context);
     static async #toggleEffect(event, target) {
         const effect = await this._getEmbeddedDocument(target);
         effect?.update({ disabled: !effect.disabled });
+    }
+
+    static #deleteItem(event, target) {
+        const itemId = target.closest("[data-item-id]").dataset.itemId;
+        this.actor.deleteEmbeddedDocuments("Item", [itemId]);
     }
 
     // =========================================================================

@@ -14,7 +14,8 @@
     "cyberhack.mjs"
   ],
   "styles": [
-    "css/cyberhack.css"
+    "css/cyberhack.css",
+    "css/tab-talents.css"
   ],
   "languages": [
     {
