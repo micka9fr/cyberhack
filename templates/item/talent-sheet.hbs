@@ -1,35 +1,34 @@
-<div class="draggable-item" draggable="true">
-	<header class="sheet-header flexcol">
-		<div class="flexrow">
-			<h3>{{item.type}} : {{ item.name }} - {{ item.system.level }}</h3>
-			<input type="checkbox" class="view-editor" data-action="toggleEditMode" {{checked isEditMode}}>
+<section class="sheet-body">
+	{{#if (not @root.isEditing) }}
+		<p class="card-body">
+			{{#if (eq system.effect "adv") }}
+				{{localize "cyberhack.Item.Talent.HTMLtext.effect.adv" }}
+			{{else}}
+				{{localize "cyberhack.Item.Talent.HTMLtext.effect.des" }}
+			{{/if}}
+			<strong>{{ system.skill }}</strong>
+			when {{ system.condition }}
+		</p>
+		<div class="card-bottom">
+			{{ system.description }}
 		</div>
-	</header>
-	<section class="sheet-body">
-		<div class="view-edit" data-edit-mode="true">
-			<div class="form-group">
-				{{ formGroup systemFields.description value=item.system.description localize=true}}
+	{{else}}
+		<div>
+			<div class="form-fields">
+				{{ formGroup systemFields.xpCost value=system.xpCost localize=true disabled=(not @root.isEditing) }}
 			</div>
-			<div class="flexrow">
-				<div class="form-grid">
-					{{ formGroup systemFields.xpCost value=item.system.xpCost localize=true}}
-				</div>
-				<div class="form-grid">
-					{{ formGroup systemFields.level value=item.system.level localize=true}}
-				</div>
+			<div class="form-fields">
+				{{ formGroup systemFields.effect value=system.effect localize=true disabled=(not @root.isEditing) }}
 			</div>
-		</div>
-		<div class="view-read" data-edit-mode="false">
-			<div class="form-group">
-				<label>{{localize "cyberhack.Item.FIELDS.description.label" }}</label>
-				{{ item.system.description }}
+			<div class="form-fields">
+				{{ formGroup systemFields.condition value=system.condition localize=true disabled=(not @root.isEditing) }}
 			</div>
-			<div class="flexrow">
-				<label>{{localize "cyberhack.Item.FIELDS.xpCost.label" }}</label>
-				<div class="form-grid">
-					{{ item.system.xpCost }}
-				</div>
+			<div class="form-fields">
+				{{ formGroup systemFields.skill value=system.skill localize=true disabled=(not @root.isEditing) }}
+			</div>
+			<div class="form-fields">
+				{{ formGroup systemFields.description value=system.description localize=true disabled=(not @root.isEditing) }}
 			</div>
 		</div>
-	</section>
-</div>
+	{{/if}}
+</section>

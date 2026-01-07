@@ -1,5 +1,7 @@
 import { systemPath } from "../../constants.mjs";
 
+import { sheetEdit } from "../../helpers/utils.mjs";
+
 const { api, sheets } = foundry.applications;
 
 /**
@@ -10,14 +12,27 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     /** @override */
     static DEFAULT_OPTIONS = {
         classes: ["cyberhack", "item", "standard-form"],
-        position: { width: 550, height: "auto" },
-        window: {  },
+        position: { width: 480, height: 'auto' },
+        window: {
+            resizable: false,
+            title: 'cyberhack.Sheets.Title.TalentSheet',
+            controls: [
+                {
+                    icon: 'fa-solid fa-pencil',
+                    label: "Edit sheet",
+                    action: "sheetEdit",
+                },
+            ]
+        },
         actions: {
-            toggleEditMode: this.#toggleEditMode,
+            sheetEdit: sheetEdit,
+            isEquip: this.#isEquip,
             viewDoc: this.#viewEffect,
             createDoc: this.#createEffect,
             deleteDoc: this.#deleteEffect,
-            toggleEffect: this.#toggleEffect
+            toggleEffect: this.#toggleEffect,
+            addEffect: this.#addEffect,
+            deleteEffect: this.#removeEffect
         },
         form: {
             submitOnChange: true,
@@ -29,9 +44,15 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
 
     /** @override */
     static PARTS = {
+        header: {
+            template: systemPath("templates/item/parts/header.hbs"),
+        },
         body:   {
             template: systemPath("templates/item/talent-sheet.hbs"),
             scrollable: [""]
+        },
+        footer: {
+            template: systemPath("templates/item/parts/footer.hbs"),
         }
     };
 
@@ -40,19 +61,48 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         const context = await super._prepareContext(options);
 
         Object.assign(context, {
+            isEditing: this.item.getFlag("cyberhack", "isEditing") ?? false,
             owner: this.document.isOwner,
             limited: this.document.limited,
             item: this.item,
             system: this.item.system,
             flags: this.item.flags,
             itemFields: this.item.schema.fields,
+            document: this.document,
             systemFields: this.document.system.schema.fields,
+            /*
+            effectsToRender : this.document.system.effects.map((effect, i) => {
+                const fields = this.document.system.schema.getField("effects.element").fields;
+                return {
+                    namePrefix: `system.effects.${i}.`,
+                    fields, effect,
+                    idx: i,
+                };
+            }),
+            */
             //description : await foundry.applications.ux.TextEditor.enrichHTML(this.document.system.description, { secrets: this.isOwner }),
             config: CONFIG
         });
 
-        console.log(context.itemFields);
-        console.log(context.system);
+/*
+        context.basicFieldsToRender = Object.entries(this.document.system.schema.getField("basicFields").fields).map(([key, field]) => ({
+            key: this.document.system.schema.getField("basicFields").fields[key],
+            name: `system.basicFields.${key}`,
+            value: this.document.system.basicFields[key] ?? field.initial,
+            label: field.label || key,
+            type: field instanceof foundry.data.fields.BooleanField
+                ? "checkbox"
+                : field instanceof foundry.data.fields.NumberField
+                    ? "number"
+                    : "text"
+        }));
+
+
+
+
+
+    */
+
 
         return context;
     }
@@ -75,6 +125,28 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     /* -------------------------------------------------- */
     /*   Event handlers                                   */
     /* -------------------------------------------------- */
+
+
+    static async #sheetEdit(event, target){
+        event.preventDefault();
+
+        const sheet = document.querySelector(".window-content");
+        const inputs = sheet.querySelectorAll("input, textarea, select");
+
+        let isEditing = this.actor.getFlag("cyberhack", "isEditing") ?? false;
+
+        const newEditingState = !isEditing;
+
+        await this.actor.setFlag("cyberhack", "isEditing", newEditingState);
+
+        inputs.forEach(el => {
+            if (newEditingState) {
+                el.removeAttribute("disabled");
+            } else {
+                el.setAttribute("disabled", "disabled");
+            }
+        });
+    }
 
     /**
      * Renders an embedded document's sheet
@@ -150,21 +222,30 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
      * Toggle édition/lecture quand on coche la case
      */
     static #toggleEditMode(event, target) {
-        const checkbox = target;
-        console.log(checkbox);
-        const isEditMode = checkbox.checked;
-
-        // On toggle simplement les deux blocs
-        const sheetBody = checkbox.closest(".sheet-body") || checkbox.closest(".window-content");
-        sheetBody.querySelectorAll("[data-edit-mode]").forEach(el => {
-            el.style.display = el.dataset.editMode === "true" ?
-                (isEditMode ? "block" : "none") :
-                (isEditMode ? "none" : "block");
-        });
-
-        // Optionnel : sauvegarde le choix de l'utilisateur
-        game.user.setFlag("cyberhack", "itemEditMode", isEditMode);
+        const isEditMode = target.checked;
+        target.closest(".window-content").classList.toggle("edit-mod", isEditMode);
     }
+
+    /** Ajoute un effet vide */
+    static #addEffect(event, target) {
+        const effects = foundry.utils.deepClone(this.item.system.effects ?? []);
+        effects.push({ key: "", type: "attributes", value: 1 });
+        this.item.update({ "system.effects": effects });
+    }
+
+    /** Supprime un effet à l'index donné */
+    static #removeEffect(event, target) {
+        const index = Number(target.dataset.index);
+        const effects = foundry.utils.deepClone(this.item.system.effects ?? []);
+        effects.splice(index, 1);
+        this.item.update({ "system.effects": effects });
+    }
+
+    static #isEquip(event,target) {
+
+    }
+
+
 
     /* -------------------------------------------------- */
     /*   Drag and drop                                    */
@@ -373,7 +454,6 @@ export class TalentSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
      * @private
      */
     #createDragDropHandlers() {
-        console.log(this);
         return this.options.dragDrop.map((d) => {
             d.permissions = {
                 dragstart: this._canDragStart.bind(this),

@@ -15,7 +15,13 @@
   ],
   "styles": [
     "css/cyberhack.css",
-    "css/tab-talents.css"
+    "css/tab-talents.css",
+    "css/tab-skills.css",
+    "css/footer.css",
+    "css/card-talent.css",
+    "css/tab-cyberware.css",
+    "css/item-weapon.css",
+    "css/skill-roll.css"
   ],
   "languages": [
     {
@@ -31,9 +37,20 @@
     },
     "Item": {
       "talent": {
+        "htmlFields": ["system.description.value"]
+      },
+      "cyberware": {
         "htmlFields": ["system.description"]
       },
-      "cyberware": {}
+      "rangedWeapon": {
+        "htmlFields": ["system.description"]
+      },
+      "meleeWeapon": {
+        "htmlFields": ["system.description"]
+      },
+      "armor": {
+        "htmlFields": ["system.description"]
+      }
     }
   },
   "packs": [

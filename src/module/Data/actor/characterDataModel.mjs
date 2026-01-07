@@ -1,6 +1,9 @@
 // === Init fields var ===
 const fields = foundry.data.fields;
 
+const inputNumberConfigSkill = { initial:0 }
+const inputNumberConfigAttr = { initial:4 }
+
 /* -------------------------------------------- */
 /*  Actor Models                                */
 /* -------------------------------------------- */
@@ -11,10 +14,7 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
     static defineSchema() {
         return {
             role: new fields.StringField({ initial: 'Je suis un PJ' }),
-            health: new fields.SchemaField({
-                value: new fields.NumberField(),
-                max: new fields.NumberField()
-            }),
+            health: new fields.NumberField({}),
             armor: new fields.SchemaField({
                 head: new fields.NumberField(),
                 torso: new fields.NumberField(),
@@ -25,22 +25,59 @@ class BaseDataModel extends foundry.abstract.TypeDataModel  {
             }),
             attributes: new fields.SchemaField({
                 body: new fields.SchemaField({
-                    base: new fields.NumberField()
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        Athletic: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Endurance: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Melee: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        StrengthFeat: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) })
+                    })
                 }),
                 dexterity: new fields.SchemaField({
-                    base: new fields.NumberField()
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        DrivePilot: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Firearms: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        JuryRig: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Stealth: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                    })
                 }),
-                reflexe: new fields.SchemaField({
-                    base: new fields.NumberField()
+                instinct: new fields.SchemaField({
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        Awareness: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Psychology: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Reaction: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Survival: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+
+                    })
                 }),
                 willpower: new fields.SchemaField({
-                    base: new fields.NumberField()
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        Coercion: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Concentration: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Research: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Streetwise: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) })
+                    })
                 }),
                 knowledge: new fields.SchemaField({
-                    base: new fields.NumberField()
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        Corpwise: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Engineering: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Hacking: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Medicine: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) })
+                    })
                 }),
-                empathy: new fields.SchemaField({
-                    base: new fields.NumberField()
+                charisma: new fields.SchemaField({
+                    base: new fields.NumberField(inputNumberConfigAttr),
+                    skills: new fields.SchemaField({
+                        Conversation: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Performance: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Seduction: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) }),
+                        Style: new fields.SchemaField({ base: new fields.NumberField(inputNumberConfigSkill) })
+                    })
                 }),
             }),
         };

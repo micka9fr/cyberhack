@@ -1,3 +1,27 @@
+export async function sheetEdit(event, target){
+    event.preventDefault();
+    let object = this.item;
+    if (this.options.classes.includes("actor")) {
+        object = this.actor;
+    }
+
+    const inputs = this.element.querySelectorAll("input, textarea, select");
+
+    let isEditing = object.getFlag("cyberhack", "isEditing") ?? false;
+
+    const newEditingState = !isEditing;
+
+    await object.setFlag("cyberhack", "isEditing", newEditingState);
+
+    inputs.forEach(el => {
+        if (newEditingState) {
+            el.removeAttribute("disabled");
+        } else {
+            el.setAttribute("disabled", "disabled");
+        }
+    });
+}
+
 /**
  * Searches through an object recursively and localizes strings
  * @param {Record<string, unknown>} object
@@ -23,7 +47,7 @@ export function localizeHelper(object) {
  * @param {ActiveEffect[]} effects    A collection or generator of Active Effect documents to prepare sheet data for
  * @return {object}                   Data for rendering
  */
-export function prepareActiveEffectCategories(effects) {
+export function prepareActiveEffectCategories(effects, type= false) {
     const categories = {
         temporary: {
             type: "temporary",
@@ -52,6 +76,9 @@ export function prepareActiveEffectCategories(effects) {
     // Sort each category
     for (const c of Object.values(categories)) {
         c.effects.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    }
+    if (type) {
+        return categories[type];
     }
     return categories;
 }

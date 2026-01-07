@@ -29,3 +29,9 @@
     opacity: 1;
     color: #ff0000;
 }
+
+.item-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

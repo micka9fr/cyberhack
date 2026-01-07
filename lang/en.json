@@ -1,41 +1,141 @@
 {
   "cyberhack": {
+    "Dice": {
+      "flavorSkillRoll": "Skills",
+      "noAmmo": "No ammo",
+      "weaponList": "Weapon list",
+      "unarmed": "Unarmed",
+      "options": "Options",
+      "powerStrike": "Power strike",
+      "aimedStrike": "Aimed strike",
+      "burst": "Burst",
+      "aimedShot": "Aimed shot",
+      "targetLocation": "Location",
+      "targetNone": "None",
+      "head": "Head",
+      "torso": "Torso",
+      "arm": "Arm",
+      "r_arm": "Right arm",
+      "l_arm": "Left arm",
+      "r_leg": "Right leg",
+      "l_leg": "Left leg",
+      "leg": "Leg",
+      "other": "Other"
+    },
+    "Effect": {
+      "Label": "Effect",
+      "Inactive": "Inactive",
+      "Passive": "Passive",
+      "Temporary": "Temporary",
+      "Toggle": "Toggle Effect"
+    },
     "Actor": {
       "Character": {
         "FIELDS": {
           "role": {
             "label": "role"
           },
+          "health" : {
+            "label": "Health"
+          },
           "attributes": {
             "body": {
-              "base": {
-                "label": "body"
-              }
+              "label": "body"
             },
             "dexterity": {
-              "base": {
-                "label": "dexterity"
-              }
+              "label": "dexterity"
             },
-            "reflexe": {
-              "base": {
-                "label": "reflexe"
-              }
+            "instinct": {
+              "label": "Instinct"
             },
             "willpower": {
-              "base": {
-                "label": "willpower"
-              }
+              "label": "willpower"
             },
             "knowledge": {
-              "base": {
-                "label": "knowledge"
-              }
+              "label": "knowledge"
             },
-            "empathy": {
-              "base": {
-                "label": "empathy"
-              }
+            "charisma": {
+              "label": "Charisma"
+            }
+          },
+          "skills" : {
+            "StrengthFeat": {
+              "label": "Strength feat"
+            },
+            "Style": {
+              "label": "Style"
+            },
+            "Endurance": {
+              "label": "Endurance"
+            },
+            "Brawl": {
+              "label": "Brawl"
+            },
+            "Melee": {
+              "label": "Melee"
+            },
+            "JuryRig": {
+              "label": "Jury-rig"
+            },
+            "Larceny": {
+              "label": "Larceny"
+            },
+            "Athletic": {
+              "label": "Athletic"
+            },
+            "Reaction": {
+              "label": "Reaction"
+            },
+            "Firearms": {
+              "label": "Firearms"
+            },
+            "Stealth": {
+              "label": "Stealth"
+            },
+            "DrivePilot": {
+              "label": "Drive/Pilot"
+            },
+            "Awareness": {
+              "label": "Awareness"
+            },
+            "Survival": {
+              "label": "Survival"
+            },
+            "Coercion": {
+              "label": "Coercion"
+            },
+            "Streetwise": {
+              "label": "Streetwise"
+            },
+            "Hacking": {
+              "label": "Hacking"
+            },
+            "Engineering": {
+              "label": "Engineering"
+            },
+            "Corpwise": {
+              "label": "Corpwise"
+            },
+            "Concentration": {
+              "label": "Concentration"
+            },
+            "Medicine": {
+              "label": "Medicine"
+            },
+            "Research": {
+              "label": "Research"
+            },
+            "Conversation": {
+              "label": "Conversation"
+            },
+            "Psychology": {
+              "label": "Psychology"
+            },
+            "Performance": {
+              "label": "Performance"
+            },
+            "Seduction": {
+              "label": "Seduction"
             }
           },
           "armor": {
@@ -74,38 +174,168 @@
     },
     "Item": {
       "FIELDS": {
-        "description": {
-          "label": "description"
+        "encumbrance": {
+          "label" : "Encumbrance"
         },
-        "xpCost": {
-          "label": "XP cost"
+        "description": {
+          "label": "Description"
+        },
+        "price": {
+          "label": "Price"
+        },
+        "rarity": {
+          "label": "Rarity",
+          "cheap": "Cheap",
+          "everyday": "Everyday",
+          "costly": "Costly",
+          "premium": "Premium",
+          "expensive": "Expensive",
+          "veryExpensive": "Very Expensive",
+          "luxury": "Luxury",
+          "superLuxury": "Super luxury"
+        }
+      },
+      "Armor": {
+        "FIELDS": {
+          "armorValue": {
+            "head": {
+              "label": "Head"
+            },
+            "torso": {
+              "label": "Torso"
+            },
+            "legR": {
+              "label": "R.Leg"
+            },
+            "legL": {
+              "label": "L.Leg"
+            },
+            "armR": {
+              "label": "R.Arm"
+            },
+            "armL": {
+              "label": "L.Arm"
+            }
+          },
+          "armorMalus": {
+            "label": "Penalty"
+          }
+        }
+      },
+      "Weapon": {
+        "type": "Type",
+        "weaponTypes": {
+          "melee": "melee",
+          "handgun": "Handgun",
+          "rifle": "Rifle",
+          "smg": "SMG",
+          "shotgun": "Shotgun"
+        },
+        "FIELDS": {
+          "hitBonus": {
+            "label": "Hit"
+          },
+          "damage": {
+            "label": "Damages"
+          },
+          "range": {
+            "label": "Range"
+          },
+          "ammo": {
+            "label": "Ammo",
+            "max": {
+              "label" : "Max"
+            },
+            "current" : {
+              "label": "Current"
+            }
+          }
+        }
+      },
+      "Cyberware":{
+        "cyberTypes": {
+          "implant": "Implant",
+          "cyberWeapon": "Cyber weapon",
+          "cyberLimb": "Cyber limb",
+          "cyberEyes": "Cyber eyes"
+        },
+        "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
+          "stress": {
+            "label": "Stress"
+          },
+          "durability": {
+            "label": "Durability"
+          },
+          "effects": {
+            "label": "Effects to the character",
+            "key": {
+              "label": "Key"
+            },
+            "value": {
+              "label": "Value"
+            }
+          }
         }
       },
       "Talent": {
         "FIELDS": {
-          "xpPrice": {
-            "label": "cost"
+          "xpCost": {
+            "label": "XP cost"
           },
-          "level": {
-            "label": "level"
+          "effect": {
+            "label": "Effect"
+          },
+          "skill": {
+            "label": "Skill"
+          },
+          "condition": {
+            "label": "Condition"
+          },
+          "description": {
+            "label": "Description"
+          }
+        },
+        "HTMLtext": {
+          "effect": {
+            "adv": "Get the ADVANTAGE with ",
+            "des": "Remove the DISADVANTAGE with "
           }
         }
       }
     },
     "Sheets": {
-      "Labels": {
-        "ActorSheet": "Default cyberhack Actor Sheet",
-        "ItemSheet": "Default cyberhack Item Sheet"
+      "Title": {
+        "ActorSheet": "Actor Sheet",
+        "ItemSheet": "Item Sheet",
+        "TalentSheet": "Talent Sheet",
+        "CyberwareSheet": "Cyberware Sheet"
       },
       "Tabs": {
+        "skills": "Skills",
+        "combat": "combat",
+        "gears": "gears",
         "talents": "Talents",
-        "cyberwares": "Cyberwares"
+        "cyberwares": "Cybers"
+      },
+      "Dialog": {
+        "modifier": "Modifier",
+        "difficulty": "Difficulty"
       }
     }
   },
   "TYPES": {
     "Actor": {
       "character": "Player Character"
+    },
+    "Item": {
+      "talent": "TALENT",
+      "cyberware": "CYBERWARE",
+      "rangedWeapon": "RANGED WEAPON",
+      "meleeWeapon": "MELEE WEAPON",
+      "armor": "ARMOR"
     }
   }
 }

@@ -2,68 +2,24 @@ nav.tabs {
     text-transform: uppercase;
 }
 
-.cyberhack-stats-block {
-    min-width: 150px;
-    max-width: 150px;
-    li {
-        list-style-type: none;
-    }
-    .form-fields input[type="number"] {
-        min-width: 50px;
-        max-width: 50px;
-    }
+section.tab {
+
 }
 
-.panel-right {
-    margin-left: 24px;
-    .armor-block, .secondary-block {
-        max-width: 350px;
-        .armor {
-            flex-direction: column;
-            margin: 0 3px;
-        }
+.header-line {
+    label {
+        //background-color: var(--color-tabs-border);
+        //color: black;
     }
 }
 
+.armor {
+    > label{
+        text-align: center;
+    }
+    > div {
+        background-color: var(--color-tabs-border);
+        color: black;
+    }
 
-.center {
-    text-align: center;
-}
-
-a.label.roll-attribute {
-    padding: 7px 0;
-}
-
-/* ==================================================================
-   ITEM SHEET – MODE ÉDITION / LECTURE
-   ================================================================== */
-
-/* Par défaut : on est en mode lecture */
-.view-edit   { display: none; }
-.view-read   { display: block; }
-
-/* Optionnel : un peu de style pour le checkbox (le rendre joli) */
-header.sheet-header .view-editor {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #ff6400; /* change la couleur du check (orange cyberpunk) */
-    margin: 8px;
-}
-
-/* Optionnel : faire apparaître un petit crayon quand on est en lecture */
-header.sheet-header::after {
-    content: "✎";
-    font-size: 1.4em;
-    position: absolute;
-    top: 8px;
-    left: 36px;
-    opacity: 0.4;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-.view-editor:checked ~ header.sheet-header::after {
-    content: "✓";
-    opacity: 1;
-    color: #00ff00;
 }
